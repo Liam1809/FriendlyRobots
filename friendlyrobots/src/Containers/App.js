@@ -22,12 +22,15 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state.robots);
+    const filteredRobots = this.state.robots.filter((robot) =>
+      robot.name.toLowerCase().includes(this.state.searchField.toLowerCase())
+    );
+
     return (
       <div className="tc">
         <h1>Robots are friendly</h1>
         <SearchBox searchOnChange={this.searchOnChange} />
-        <CardList robots={this.state.robots} />
+        <CardList robots={filteredRobots} />
       </div>
     );
   }
