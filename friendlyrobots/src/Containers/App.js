@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CardList from "../Components/CardList";
+import ErrorBoundary from "../Components/ErrorBoundary";
 import Scroll from "../Components/Scroll";
 import SearchBox from "../Components/SearchBox";
 import "./App.css";
@@ -34,10 +35,12 @@ class App extends Component {
     ) : (
       <div className="tc">
         <h1 className="f1">Robots are friendly</h1>
-        <SearchBox searchOnChange={this.searchOnChange} />
-        <Scroll>
-          <CardList robots={filteredRobots} />
-        </Scroll>
+        <ErrorBoundary>
+          <SearchBox searchOnChange={this.searchOnChange} />
+          <Scroll>
+            <CardList robots={filteredRobots} />
+          </Scroll>
+        </ErrorBoundary>
       </div>
     );
   }
