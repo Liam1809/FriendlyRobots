@@ -7,8 +7,11 @@ const Scroll = (props) => {
         overflow: "scroll",
         border: "1px solid black",
         height: "80vh",
-        width: "80vw",
+        maxWidth: "75%",
         margin: "0 auto",
+        padding: "5px",
+        msOverflowStyle: "none",
+        scrollbarWidth: "none",
       }}
     >
       {props.children}

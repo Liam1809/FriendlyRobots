@@ -1,7 +1,7 @@
 import React from "react";
 
-const CheckError =  (props) => {
-
+const CheckError = (props) => {
+  return <>{props.children}</>;
 };
 
-export defauly CheckError;
+export default CheckError;
