@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/FriendlyRobots/static/css/main.6e8eb4c9.css",
+    "main.js": "/FriendlyRobots/static/js/main.067deac5.js",
+    "static/js/787.2543c049.chunk.js": "/FriendlyRobots/static/js/787.2543c049.chunk.js",
+    "static/media/SEGA.woff": "/FriendlyRobots/static/media/SEGA.47b4bfa94ef243af4a5b.woff",
+    "index.html": "/FriendlyRobots/index.html",
+    "main.6e8eb4c9.css.map": "/FriendlyRobots/static/css/main.6e8eb4c9.css.map",
+    "main.067deac5.js.map": "/FriendlyRobots/static/js/main.067deac5.js.map",
+    "787.2543c049.chunk.js.map": "/FriendlyRobots/static/js/787.2543c049.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6e8eb4c9.css",
+    "static/js/main.067deac5.js"
+  ]
+}
