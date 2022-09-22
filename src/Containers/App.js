@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { searchRobots } from '../Actions/Actions';
+import { fetchRobots, searchRobots } from '../Actions/Actions';
 import CardList from '../Components/CardList';
 import ErrorBoundary from '../Components/ErrorBoundary';
 import Scroll from '../Components/Scroll';
@@ -11,24 +11,25 @@ import './App.css';
 const mapStateToProps = state => {
   return {
     searchField: state.searchRobots.searchField,
+    robots: state.fetchRobots.robots,
   };
 };
 // manage redux root action connection
 const mapDispatchToProps = dispatch => {
   return {
     onSearchChange: event => dispatch(searchRobots(event.target.value)),
+    fetchRobots: value => dispatch(fetchRobots(value)),
   };
 };
 
 function App(props) {
-  const [robots, setRobots] = useState([]);
-
-  const { searchField, onSearchChange } = props;
+  const { searchField, onSearchChange, robots, fetchRobots } = props;
 
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(response => response.json())
-      .then(values => setRobots(values));
+      .then(values => fetchRobots(values));
+    // eslint-disable-next-line
   }, []);
 
   const filteredRobots = robots.filter(robot =>
