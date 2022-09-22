@@ -1,6 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { combineReducers, createReducer } from 'redux';
+import { createStore } from 'redux';
+import rootReducer from './Reducers/Reducers';
 import ReactDOM from 'react-dom/client';
 import App from './Containers/App';
 import './index.css';
@@ -10,8 +11,7 @@ import 'tachyons';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 // apply redux
-const rootReducer = combineReducers({});
-const store = createReducer(rootReducer);
+const store = createStore(rootReducer);
 
 root.render(
   <Provider store={store}>
