@@ -1,12 +1,16 @@
 import { combineReducers } from 'redux';
-import { CHANGE_SEARCH_FIELD, FETCH_ROBOTS } from '../Constants/Constants';
+import {
+  CHANGE_SEARCH_FIELD,
+  FETCH_ROBOTS_PENDING,
+  FETCH_ROBOTS_SUCCESS,
+  FETCH_ROBOTS_FAILED,
+} from '../Constants/Constants';
 
-const initialState = {
+const initialStateSearchField = {
   searchField: '',
-  robots: [],
 };
 
-export const searchRobots = (state = initialState, action = {}) => {
+export const searchRobots = (state = initialStateSearchField, action = {}) => {
   switch (action.type) {
     case CHANGE_SEARCH_FIELD:
       return { ...state, searchField: action.payload };
@@ -15,10 +19,20 @@ export const searchRobots = (state = initialState, action = {}) => {
   }
 };
 
-export const fetchRobots = (state = initialState, action = {}) => {
+const initialStateRobots = {
+  robots: [],
+  isPending: false,
+  error: '',
+};
+
+export const fetchRobots = (state = initialStateRobots, action = {}) => {
   switch (action.type) {
-    case FETCH_ROBOTS:
-      return { ...state, robots: action.payload };
+    case FETCH_ROBOTS_PENDING:
+      return { ...state, isPending: true };
+    case FETCH_ROBOTS_SUCCESS:
+      return { ...state, robots: action.payload, isPending: false };
+    case FETCH_ROBOTS_FAILED:
+      return { ...state, error: action.payload, isPending: false };
     default:
       return state;
   }

@@ -12,23 +12,24 @@ const mapStateToProps = state => {
   return {
     searchField: state.searchRobots.searchField,
     robots: state.fetchRobots.robots,
+    isPending: state.fetchRobots.isPending,
+    error: state.fetchRobots.error,
   };
 };
 // manage redux root action connection
 const mapDispatchToProps = dispatch => {
   return {
     onSearchChange: event => dispatch(searchRobots(event.target.value)),
-    fetchRobots: value => dispatch(fetchRobots(value)),
+    fetchRobots: () => dispatch(fetchRobots()),
   };
 };
 
 function App(props) {
-  const { searchField, onSearchChange, robots, fetchRobots } = props;
+  const { searchField, onSearchChange, robots, fetchRobots, isPending, error } =
+    props;
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response => response.json())
-      .then(values => fetchRobots(values));
+    fetchRobots();
     // eslint-disable-next-line
   }, []);
 
@@ -36,8 +37,10 @@ function App(props) {
     robot.name.toLowerCase().includes(searchField.toLowerCase())
   );
 
-  return !robots.length ? (
+  return isPending ? (
     <h1 className="f1">Loading...</h1>
+  ) : error ? (
+    <h1 className="f1">Whoops...</h1>
   ) : (
     <div className="tc">
       <h1 className="f1">Robots are friendly</h1>

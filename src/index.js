@@ -1,6 +1,8 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createLogger } from 'redux-logger';
+import thunk from 'redux-thunk';
+import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './Reducers/Reducers';
 import ReactDOM from 'react-dom/client';
 import App from './Containers/App';
@@ -10,8 +12,10 @@ import 'tachyons';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
+// redux logger
+const logger = createLogger();
 // apply redux
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 
 root.render(
   <Provider store={store}>
