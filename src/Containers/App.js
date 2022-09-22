@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from "react";
-import CardList from "../Components/CardList";
-import ErrorBoundary from "../Components/ErrorBoundary";
-import Scroll from "../Components/Scroll";
-import SearchBox from "../Components/SearchBox";
-import "./App.css";
+import React, { useState, useEffect } from 'react';
+import CardList from '../Components/CardList';
+import ErrorBoundary from '../Components/ErrorBoundary';
+import Scroll from '../Components/Scroll';
+import SearchBox from '../Components/SearchBox';
+import './App.css';
 
 function App() {
   const [robots, setRobots] = useState([]);
-  const [searchField, setSearchField] = useState("");
+  const [searchField, setSearchField] = useState('');
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
-      .then((values) => setRobots(values));
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(values => setRobots(values));
   }, []);
 
-  const searchOnChange = (event) => {
+  const searchOnChange = event => {
     setSearchField(event.target.value);
   };
 
-  const filteredRobots = robots.filter((robot) =>
+  const filteredRobots = robots.filter(robot =>
     robot.name.toLowerCase().includes(searchField.toLowerCase())
   );
 

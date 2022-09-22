@@ -1,13 +1,13 @@
-import React from "react";
-import { Provider } from "react-redux";
-import { combineReducers, createReducer } from "redux";
-import ReactDOM from "react-dom/client";
-import App from "./Containers/App";
-import "./index.css";
-import reportWebVitals from "./reportWebVitals";
-import "tachyons";
+import React from 'react';
+import { Provider } from 'react-redux';
+import { combineReducers, createReducer } from 'redux';
+import ReactDOM from 'react-dom/client';
+import App from './Containers/App';
+import './index.css';
+import reportWebVitals from './reportWebVitals';
+import 'tachyons';
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
 // apply redux
 const rootReducer = combineReducers({});

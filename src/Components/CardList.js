@@ -1,5 +1,5 @@
-import React from "react";
-import Card from "../Components/Card";
+import React from 'react';
+import Card from '../Components/Card';
 
 const CardList = ({ robots }) => {
   //Testing ErrorBoundary
