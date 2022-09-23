@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/FriendlyRobots/static/css/main.6e8eb4c9.css",
-    "main.js": "/FriendlyRobots/static/js/main.04d47000.js",
+    "main.js": "/FriendlyRobots/static/js/main.2fa3520a.js",
     "static/js/787.2543c049.chunk.js": "/FriendlyRobots/static/js/787.2543c049.chunk.js",
     "static/media/SEGA.woff": "/FriendlyRobots/static/media/SEGA.47b4bfa94ef243af4a5b.woff",
     "index.html": "/FriendlyRobots/index.html",
     "main.6e8eb4c9.css.map": "/FriendlyRobots/static/css/main.6e8eb4c9.css.map",
-    "main.04d47000.js.map": "/FriendlyRobots/static/js/main.04d47000.js.map",
+    "main.2fa3520a.js.map": "/FriendlyRobots/static/js/main.2fa3520a.js.map",
     "787.2543c049.chunk.js.map": "/FriendlyRobots/static/js/787.2543c049.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6e8eb4c9.css",
-    "static/js/main.04d47000.js"
+    "static/js/main.2fa3520a.js"
   ]
 }
