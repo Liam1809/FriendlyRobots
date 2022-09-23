@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchRobots, searchRobots } from '../Actions/Actions';
+import { fetchRobots, searchRobots, getFilterRobots } from '../Actions/Actions';
 import CardList from '../Components/CardList';
 import ErrorBoundary from '../Components/ErrorBoundary';
 import Scroll from '../Components/Scroll';
@@ -12,6 +12,7 @@ const mapStateToProps = state => {
   return {
     searchField: state.searchRobots.searchField,
     robots: state.fetchRobots.robots,
+    filterRobots: state.getFilterRobots.filterRobots,
     isPending: state.fetchRobots.isPending,
     error: state.fetchRobots.error,
   };
@@ -20,22 +21,34 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onSearchChange: event => dispatch(searchRobots(event.target.value)),
-    fetchRobots: () => dispatch(fetchRobots()),
+    onFetchRobots: () => dispatch(fetchRobots()),
+    onGetFilterRobots: (robots, searchField) =>
+      dispatch(getFilterRobots(robots, searchField)),
   };
 };
 
 function App(props) {
-  const { searchField, onSearchChange, robots, fetchRobots, isPending, error } =
-    props;
+  const {
+    searchField,
+    onSearchChange,
+    robots,
+    onFetchRobots,
+    isPending,
+    error,
+    filterRobots,
+    onGetFilterRobots,
+  } = props;
 
   useEffect(() => {
-    fetchRobots();
+    onFetchRobots();
     // eslint-disable-next-line
   }, []);
 
-  const filteredRobots = robots.filter(robot =>
-    robot.name.toLowerCase().includes(searchField.toLowerCase())
-  );
+  useEffect(() => {
+    onGetFilterRobots(robots, searchField);
+    //FilterRobots only changes when robots and searchField change
+    // eslint-disable-next-line
+  }, [robots, searchField]);
 
   return isPending ? (
     <h1 className="f1">Loading...</h1>
@@ -47,7 +60,7 @@ function App(props) {
       <ErrorBoundary>
         <SearchBox onSearchChange={onSearchChange} />
         <Scroll>
-          <CardList robots={filteredRobots} />
+          <CardList robots={filterRobots} />
         </Scroll>
       </ErrorBoundary>
     </div>

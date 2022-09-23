@@ -4,6 +4,7 @@ import {
   FETCH_ROBOTS_PENDING,
   FETCH_ROBOTS_SUCCESS,
   FETCH_ROBOTS_FAILED,
+  FILTER_ROBOTS,
 } from '../Constants/Constants';
 
 const initialStateSearchField = {
@@ -38,4 +39,20 @@ export const fetchRobots = (state = initialStateRobots, action = {}) => {
   }
 };
 
-export default combineReducers({ searchRobots, fetchRobots });
+const initialStateFilterRobots = {
+  filterRobots: [],
+};
+
+export const getFilterRobots = (
+  state = initialStateFilterRobots,
+  action = {}
+) => {
+  switch (action.type) {
+    case FILTER_ROBOTS:
+      return { ...state, filterRobots: action.payload };
+    default:
+      return state;
+  }
+};
+
+export default combineReducers({ searchRobots, fetchRobots, getFilterRobots });
